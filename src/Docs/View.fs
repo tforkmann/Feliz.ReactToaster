@@ -81,13 +81,13 @@ let private leftSide (p: Page) =
                     "inline-block text-3xl font-title px-5 py-5 font-bold"
                     [ Html.span [
                           color.textPrimary
-                          prop.text "Feliz.ReactToastify"
+                          prop.text "Feliz.ReactToaster"
                       ]
                       Html.a [
-                          prop.href "https://www.nuget.org/packages/Feliz.ReactToastify"
+                          prop.href "https://www.nuget.org/packages/Feliz.ReactToaster"
                           prop.children [
                               Html.img [
-                                  prop.src "https://img.shields.io/nuget/v/Feliz.ReactToastify.svg?style=flat-square"
+                                  prop.src "https://img.shields.io/nuget/v/Feliz.ReactToaster.svg?style=flat-square"
                               ]
                           ]
                       ] ]

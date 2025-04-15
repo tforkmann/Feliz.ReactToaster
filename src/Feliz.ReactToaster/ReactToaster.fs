@@ -1,4 +1,4 @@
-namespace Feliz.ReactToastify
+namespace Feliz.ReactToaster
 
 open Fable.Core.JsInterop
 open Fable.Core
@@ -8,7 +8,7 @@ type Event = Browser.Types.Event
 
 // The !! below is used to "unsafely" expose a prop into an ISliderProp.
 [<Erase>]
-type ReactToastify =
+type ReactToaster =
     /// Creates a new Slider component.
 
     static member inline slider(props: ISliderProp seq) =

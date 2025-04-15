@@ -12,7 +12,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     return {
         plugins: [react(), tailwindcss()],
         root: "./src/Docs",
-        base: isDev ? undefined : '/Feliz.ReactToastify/',
+        base: isDev ? undefined : '/Feliz.ReactToaster/',
         build: {
             outDir: "../../publish/docs",
             emptyOutDir: true,

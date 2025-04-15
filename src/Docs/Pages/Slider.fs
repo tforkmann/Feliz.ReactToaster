@@ -2,11 +2,11 @@ module Docs.Pages.Slider
 
 open Feliz
 open Feliz.Bulma
-open Feliz.ReactToastify
+open Feliz.ReactToaster
 open Docs.SharedView
 [<ReactComponent>]
-let ReactToastify () =
-    ReactToastify.slider [
+let ReactToaster () =
+    ReactToaster.slider [
         slider.min 20
         slider.defaultValue 20
         slider.stepNull
@@ -22,13 +22,13 @@ let Slider =
     Html.div [
         prop.style [ style.height 800 ]
         prop.children [
-            ReactToastify()
+            ReactToaster()
         ]
     ]
 
 let code =
     """
-    ReactToastify.slider [
+    ReactToaster.slider [
         slider.min 20
         slider.defaultValue 20
         slider.stepNull

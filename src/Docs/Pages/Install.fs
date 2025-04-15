@@ -12,7 +12,7 @@ let InstallView () =
             Daisy.mockupCode [
                 Html.pre [
                     mockupCode.prefix "$"
-                    prop.children [ Html.code "Install-Package Feliz.ReactToastify" ]
+                    prop.children [ Html.code "Install-Package Feliz.ReactToaster" ]
                 ]
             ]
         ]
@@ -21,7 +21,7 @@ let InstallView () =
             Daisy.mockupCode [
                 Html.pre [
                     mockupCode.prefix "$"
-                    prop.children [ Html.code "paket add Feliz.ReactToastify" ]
+                    prop.children [ Html.code "paket add Feliz.ReactToaster" ]
                 ]
             ]
         ]

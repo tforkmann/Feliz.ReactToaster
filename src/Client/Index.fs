@@ -2,7 +2,7 @@ module Index
 
 open Elmish
 open Feliz
-open Feliz.ReactToastify
+open Feliz.ReactToaster
 
 type Model = { Txt: string }
 
@@ -16,7 +16,7 @@ let update msg (model: Model) =
 
 // [<ReactComponent>]
 // let Slider () =
-//     ReactToastify.slider [
+//     ReactToaster.slider [
 //         slider.min 20
 //         slider.defaultValue 20
 //         slider.stepNull
@@ -42,7 +42,7 @@ let update msg (model: Model) =
 //     ]
 [<ReactComponent>]
 let ReactRange () =
-    ReactToastify.slider [
+    ReactToaster.slider [
         slider.range
         slider.allowCross false
         slider.defaultValueRange (20, 80)
@@ -79,7 +79,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
     Html.div [
         prop.style [ style.height 600; style.width 600; style.marginLeft 100 ]
         prop.children [
-            Html.h1 "Hello from ReactToastify"
+            Html.h1 "Hello from ReactToaster"
             ReactRange()
         ]
 

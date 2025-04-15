@@ -85,7 +85,7 @@ let fixDocsView fileName client =
         Html.a [
             prop.href (
                 sprintf
-                    "https://github.com/tforkmann/Feliz.ReactToastify/blob/main/src/Docs/views/Feliz.ReactToastify/%s.fs"
+                    "https://github.com/tforkmann/Feliz.ReactToaster/blob/main/src/Docs/views/Feliz.ReactToaster/%s.fs"
                     fileName
             )
             prop.text ("Fix docs file " + fileName + " here")

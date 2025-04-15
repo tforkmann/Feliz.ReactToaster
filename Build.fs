@@ -30,21 +30,21 @@ let release = ReleaseNotes.load "RELEASE_NOTES.md"
 // The profile where the project is posted
 let gitHome = "https://github/tforkmann/"
 // The name of the project on GitHub
-let gitName = "Feliz.ReactToastify"
+let gitName = "Feliz.ReactToaster"
 
 // The name of the project
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
-let project = "Feliz.ReactToastify"
+let project = "Feliz.ReactToaster"
 
 let projectUrl = sprintf "%s/%s" gitHome gitName
 
 // Short summary of the project
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
-let summary = "Feliz React Binding for ReactToastify"
+let summary = "Feliz React Binding for ReactToaster"
 
 let copyright = "Copyright \169 2022"
-let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.ReactToastify/main/Feliz.ReactToastify_logo.png"
-let licenceUrl = "https://github.com/tforkmann/Feliz.ReactToastify/blob/master/LICENSE.md"
+let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.ReactToaster/main/Feliz.ReactToaster_logo.png"
+let licenceUrl = "https://github.com/tforkmann/Feliz.ReactToaster/blob/master/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
 
 // Longer description of the project
@@ -165,7 +165,7 @@ Target.create "Pack" (fun _ ->
                   MSBuildParams = args
               }) projectPath
 
-    pack "Feliz.ReactToastify"
+    pack "Feliz.ReactToaster"
 )
 
 let getBuildParam = Environment.environVar

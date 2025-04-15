@@ -11,7 +11,7 @@
         <Compile Include="App.fs" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Feliz.ReactToastify\Feliz.ReactToastify.fsproj" />
+        <ProjectReference Include="..\Feliz.ReactToaster\Feliz.ReactToaster.fsproj" />
     </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

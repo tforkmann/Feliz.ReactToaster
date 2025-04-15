@@ -1,4 +1,4 @@
-namespace Feliz.ReactToastify
+namespace Feliz.ReactToaster
 
 type ISliderProp =
     interface

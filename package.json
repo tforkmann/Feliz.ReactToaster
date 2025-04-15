@@ -32,10 +32,8 @@
         "selfsigned": "^2.0.1",
         "highlight.js": "^11.11.1",
         "serve-static": "^1.10.2",
-        "react-slick": "^0.30.3",
-        "slick-carousel": "1.8.1",
         "style-loader": "^1.2.1",
-        "rc-slider": "11.1.8",
+        "react-toastify": "11.0.5",
         "daisyui": "5.0.9"
     },
     "optionalDependencies": {

@@ -12,7 +12,7 @@ nuget Zanaptak.TypedCssClasses
 nuget Feliz.Markdown
 nuget Feliz.UseElmish
 nuget Feliz.DaisyUI
-nuget Feliz.ReactToastify
+nuget Feliz.ReactSlider
 nuget Fable.Elmish.HMR
 nuget Fake.Core.Target
 nuget Fake.DotNet.Cli

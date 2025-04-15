@@ -187,7 +187,7 @@ NUGET
     Feliz.Markdown (2.4)
       Feliz (>= 2.4)
       FSharp.Core (>= 4.7.2)
-    Feliz.ReactToastify (0.1)
+    Feliz.ReactSlider (0.3.7)
       Feliz (>= 2.9)
     Feliz.Router (4.0)
       Fable.Elmish (>= 4.0)

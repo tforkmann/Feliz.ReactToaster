@@ -1,12 +1,12 @@
 # Feliz Binding for [RC-Slider](https://github.com/react-component/slider)
 
-[![Feliz.ReactToastify on Nuget](https://buildstats.info/nuget/Feliz.ReactToastify)](https://www.nuget.org/packages/Feliz.ReactToastify/)
-[![Docs](https://github.com/tforkmann/Feliz.ReactToastify/actions/workflows/Docs.yml/badge.svg)](https://github.com/tforkmann/Feliz.ReactToastify/actions/workflows/Docs.yml)
+[![Feliz.ReactToaster on Nuget](https://buildstats.info/nuget/Feliz.ReactToaster)](https://www.nuget.org/packages/Feliz.ReactToaster/)
+[![Docs](https://github.com/tforkmann/Feliz.ReactToaster/actions/workflows/Docs.yml/badge.svg)](https://github.com/tforkmann/Feliz.ReactToaster/actions/workflows/Docs.yml)
 
 ## Installation
 Install the nuget package
 ```
-dotnet paket add Feliz.ReactToastify
+dotnet paket add Feliz.ReactToaster
 ```
 
 and install the npm package
@@ -17,7 +17,7 @@ npm install --save rc-slider
 
 or use Femto:
 ```
-femto install Feliz.ReactToastify
+femto install Feliz.ReactToaster
 ```
 
 ## Start test app
@@ -27,12 +27,12 @@ femto install Feliz.ReactToastify
 dotnet run
 ```
 
-## Example ReactToastify
+## Example ReactToaster
 
 ```fs
-Here is an example ReactToastify
+Here is an example ReactToaster
 ```fs
-    ReactToastify.slider [
+    ReactToaster.slider [
         slider.min 20
         slider.defaultValue 20
         slider.stepNull
@@ -45,4 +45,4 @@ Here is an example ReactToastify
 
 ```
 
-You can find more examples [here](https://tforkmann.github.io/Feliz.ReactToastify/)
+You can find more examples [here](https://tforkmann.github.io/Feliz.ReactToaster/)
