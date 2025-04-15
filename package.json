@@ -1,0 +1,46 @@
+{
+    "private": true,
+    "scripts": {
+        "start::client": "dotnet fable watch ./src/Client --outDir ./src/Client/output --run vite serve",
+        "build::client": "dotnet fable ./src/Client --outDir ./src/Client/output --run vite build",
+        "start::docs": "npm install && dotnet fable watch ./src/Docs --outDir ./src/Docs/output --run vite serve --config viteDocs.config.mts",
+        "build::docs": "npm install && dotnet fable ./src/Docs --outDir ./src/Docs/output --run vite build --config viteDocs.config.mts"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-transform-runtime": "^7.6.2",
+        "@babel/preset-env": "^7.9.6",
+        "@babel/runtime": "^7.6.3",
+        "@fortawesome/fontawesome-free": "^5.15.1",
+        "vite": "^6.0.11",
+        "buffer": "^6.0.3",
+        "@vitejs/plugin-react": "^4.3.4",
+        "core-js": "^3.3.2",
+        "http-proxy-middleware": "^3.0.3",
+        "i18next": "^20.3.5",
+        "open-sans-fonts": "^1.6.2",
+        "react": "^18.2.0",
+        "remotedev": "^0.2.0",
+        "react-dom": "^18.2.0",
+        "@tailwindcss/vite": "^4.0.3",
+        "@tailwindcss/typography": "^0.5.16",
+        "tailwindcss": "^4.0.3",
+        "cssnano": "^7.0.6",
+        "autoprefixer": "^10.4.2",
+        "react-highlight": "0.15.0",
+        "sass": "^1.69.5",
+        "selfsigned": "^2.0.1",
+        "highlight.js": "^11.11.1",
+        "serve-static": "^1.10.2",
+        "react-slick": "^0.30.3",
+        "slick-carousel": "1.8.1",
+        "style-loader": "^1.2.1",
+        "rc-slider": "11.1.8",
+        "daisyui": "5.0.9"
+    },
+    "optionalDependencies": {
+        "@rollup/rollup-linux-x64-gnu": "4.39.0",
+        "@tailwindcss/oxide-linux-arm64-gnu": "^4.1.1",
+        "lightningcss-linux-x64-gnu": "^1.29.3"
+    }
+}
