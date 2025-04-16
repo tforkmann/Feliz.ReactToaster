@@ -98,7 +98,7 @@ module ToastApi =
     let warning msg (props: IToastProp seq) : unit =
         callToast "warning" msg props
     // Show default toast with provided options
-    let defaultToast msg (props: IToastProp seq) : unit =
+    let defaultT msg (props: IToastProp seq) : unit =
         callToast "default" msg props
     // Elmish command versions
     type ToastMsg<'a> = {
@@ -120,17 +120,23 @@ module ToastApi =
             Dispatcher = None
         }
 
-
-
     let errorToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
         [fun dispatch ->
             msg.Dispatcher <- Some dispatch
             error msg.Message msg.Props]
-    // let cmdSuccess msg (props: IToastProp seq) : Cmd<'msg> =
-    //     Cmd.ofSub (fun _ -> success msg props)
-
-    // let cmdWarn msg (props: IToastProp seq) : Cmd<'msg> =
-    //     Cmd.ofSub (fun _ -> warn msg props)
-
-    // let cmdError msg (props: IToastProp seq) : Cmd<'msg> =
-    //     Cmd.ofSub (fun _ -> error msg props)
+    let successToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
+        [fun dispatch ->
+            msg.Dispatcher <- Some dispatch
+            success msg.Message msg.Props]
+    let infoToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
+        [fun dispatch ->
+            msg.Dispatcher <- Some dispatch
+            info msg.Message msg.Props]
+    let warningToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
+        [fun dispatch ->
+            msg.Dispatcher <- Some dispatch
+            warning msg.Message msg.Props]
+    let defaultToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
+        [fun dispatch ->
+            msg.Dispatcher <- Some dispatch
+            defaultT msg.Message msg.Props]
