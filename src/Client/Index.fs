@@ -23,10 +23,12 @@ let toast message =
     ]
 
 let errorToast title : Cmd<_> = toast title |> ToastApi.errorToast
+let successToast title : Cmd<_> = toast title |> ToastApi.successToast
+let infoToast title : Cmd<_> = toast title |> ToastApi.infoToast
 
 let update msg (model: Model) =
     match msg with
-    | ShowToast -> model, errorToast "Toast shown!"
+    | ShowToast -> model, infoToast "🦄 Wow so easy!"
 
 let view (model: Model) (dispatch: Msg -> unit) =
     Html.div [
