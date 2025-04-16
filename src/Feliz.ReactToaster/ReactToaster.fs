@@ -77,45 +77,42 @@ type toast =
     static member inline children(children: ReactElement list) =
         unbox<IToastProp> (prop.children children)
 
-
 [<Erase>]
 module ToastApi =
     open Elmish
-    // Private function to call toast method
-    let private callToast (method: string) (msg: string) (options: IToastProp seq) =
-        emitJsExpr (Interop.toast, method, msg, keyValueList CaseRules.LowerFirst options) "$0[$1]($2, $3)"
+    [<ReactComponent>]
+    let toastView (title: string) (message: string) =
+        Html.div [
+            prop.className "flex flex-col"
+            prop.children [
+                Html.strong [ prop.text title ]
+                Html.p [ prop.text message ]
+            ]
+        ]
+    let private callToast (method: string) (title: string) (message: string) (options: IToastProp seq) =
+        emitJsExpr (Interop.toast, method, toastView title message, keyValueList CaseRules.LowerFirst options) "$0[$1]($2, $3)"
 
-    // Show info toast with provided options
-    let info msg (props: IToastProp seq) : unit =
-        callToast "info" msg props
-    // Show success toast with provided options
-    let success msg (props: IToastProp seq) : unit =
-        callToast "success" msg props
-    // Show error toast with provided options
-    let error msg (props: IToastProp seq) : unit =
-        callToast "error" msg props
-    // Show warning toast with provided options
-    let warning msg (props: IToastProp seq) : unit =
-        callToast "warning" msg props
-    // Show default toast with provided options
-    let defaultT msg (props: IToastProp seq) : unit =
-        callToast "default" msg props
-    // Elmish command versions
+    let info title message (props: IToastProp seq) : unit =
+        callToast "info" title message props
+    let success title message (props: IToastProp seq) : unit =
+        callToast "success" title message props
+    let error title message (props: IToastProp seq) : unit =
+        callToast "error" title message props
+    let warning title message (props: IToastProp seq) : unit =
+        callToast "warning" title message props
+    let defaultT title message (props: IToastProp seq) : unit =
+        callToast "default" title message props
     type ToastMsg<'a> = {
+        Title : string
         Message : string
         Props: IToastProp  seq
         mutable Dispatcher : Option<'a -> unit>
     }
 
-    // let cmdInfo msg (props: IToastProp seq) : Cmd<'msg> =
-    //     Cmd.ofMsg (fun _ -> info msg props)
-    // let cmdSuccess msg (props: IToastProp seq) : Cmd<'msg> =
-    //     Cmd.ofMsg (fun _ -> success msg props)
-
-    /// Sets the message of toast
-    let message msg props =
+    let message title message props =
         {
-            Message = msg
+            Title = title
+            Message = message
             Props = props
             Dispatcher = None
         }
@@ -123,20 +120,21 @@ module ToastApi =
     let errorToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
         [fun dispatch ->
             msg.Dispatcher <- Some dispatch
-            error msg.Message msg.Props]
+            error msg.Title msg.Message msg.Props]
     let successToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
         [fun dispatch ->
             msg.Dispatcher <- Some dispatch
-            success msg.Message msg.Props]
+            success msg.Title msg.Message msg.Props]
+
     let infoToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
         [fun dispatch ->
             msg.Dispatcher <- Some dispatch
-            info msg.Message msg.Props]
+            info msg.Title msg.Message msg.Props]
     let warningToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
         [fun dispatch ->
             msg.Dispatcher <- Some dispatch
-            warning msg.Message msg.Props]
+            warning msg.Title msg.Message msg.Props]
     let defaultToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
         [fun dispatch ->
             msg.Dispatcher <- Some dispatch
-            defaultT msg.Message msg.Props]
+            defaultT msg.Title msg.Message msg.Props]

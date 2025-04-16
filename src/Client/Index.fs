@@ -9,8 +9,8 @@ type Model = { Txt: string }
 type Msg = | ShowToast
 let init () = { Txt = "" }, Cmd.none
 
-let toast message =
-    ToastApi.message message [
+let toast title message =
+    ToastApi.message title message [
         toast.position Position.TopRight
         toast.autoClose 5000
         toast.newestOnTop false
@@ -22,13 +22,13 @@ let toast message =
         toast.transition TransitionToast.flip
     ]
 
-let errorToast title : Cmd<_> = toast title |> ToastApi.errorToast
-let successToast title : Cmd<_> = toast title |> ToastApi.successToast
-let infoToast title : Cmd<_> = toast title |> ToastApi.infoToast
+let errorToast title message : Cmd<_> = toast title message |> ToastApi.errorToast
+let successToast title message : Cmd<_> = toast title message |> ToastApi.successToast
+let infoToast title message : Cmd<_> = toast title message |> ToastApi.infoToast
 
 let update msg (model: Model) =
     match msg with
-    | ShowToast -> model, infoToast "🦄 Wow so easy!"
+    | ShowToast -> model, infoToast "🦄 Wow so easy!" "Error"
 
 let view (model: Model) (dispatch: Msg -> unit) =
     Html.div [
