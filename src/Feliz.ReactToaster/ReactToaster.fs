@@ -83,11 +83,8 @@ module ToastApi =
     [<ReactComponent>]
     let toastView (title: string) (message: string) =
         Html.div [
-            prop.className "flex flex-col"
-            prop.children [
-                Html.strong [ prop.text title ]
-                Html.p [ prop.text message ]
-            ]
+            Html.strong [ prop.text title ]
+            Html.p [ prop.text message ]
         ]
     let private callToast (method: string) (title: string) (message: string) (options: IToastProp seq) =
         emitJsExpr (Interop.toast, method, toastView title message, keyValueList CaseRules.LowerFirst options) "$0[$1]($2, $3)"
