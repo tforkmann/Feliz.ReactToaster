@@ -9,108 +9,128 @@ type Event = Browser.Types.Event
 // The !! below is used to "unsafely" expose a prop into an ISliderProp.
 [<Erase>]
 type ReactToaster =
-    /// Creates a new Slider component.
 
-    static member inline slider(props: ISliderProp seq) =
-        Interop.reactApi.createElement (Interop.slider, createObj !!props)
+    static member inline toast(props: IToastProp seq) =
+        Interop.reactApi.createElement (Interop.toast, createObj !!props)
+    static member inline toastContainer(props: IToastContainerProp seq) =
+        Interop.reactApi.createElement (Interop.toastContainer, createObj !!props)
     static member inline children(children: ReactElement list) =
-        unbox<ISliderProp> (prop.children children)
+        unbox<IToastProp> (prop.children children)
 
 [<Erase>]
-type slider =
-    static member inline range =
-        Interop.mkSliderProp "range" isNullOrUndefined
-
-    static member inline allowCross (allowCross: bool) =
-        Interop.mkSliderProp "allowCross" allowCross
-    static member inline min (value: int) =
-        Interop.mkSliderProp "min" value
-    static member inline max (value: int) =
-        Interop.mkSliderProp "max" value
-    static member inline min (value: float) =
-        Interop.mkSliderProp "min" value
-    static member inline max (value: float) =
-        Interop.mkSliderProp "max" value
-
-    static member inline onChange (handler: int -> unit) : ISliderProp =
-        !!( "onChange" ==> System.Func<_,_>handler)
-
-    static member inline onChangeRange (handler: int * int -> unit) : ISliderProp =
-        !!( "onChange" ==> System.Func<_,_>handler)
-
-    static member inline onChangeRangeFloats (handler: float * float -> unit) : ISliderProp =
-        !!( "onChange" ==> System.Func<_,_>handler)
-    static member inline step (value: int) =
-        Interop.mkSliderProp "step" value
-    static member inline step (value: float) =
-        Interop.mkSliderProp "step" value
-    static member inline stepNull  =
-     Interop.mkSliderProp "step" isNullOrUndefined
-    static member inline value (value: int) =
-        Interop.mkSliderProp "value" value
-    static member inline value (value: float) =
-        Interop.mkSliderProp "value" value
-    static member inline defaultValue (value: int) =
-        Interop.mkSliderProp "defaultValue" value
-
-    static member inline defaultValue (value: float) =
-        Interop.mkSliderProp "defaultValue" value
-    static member inline defaultValueRange (value: int * int) =
-        Interop.mkSliderProp "defaultValue" value
-    static member inline defaultValueRangeFloats (value: float * float) =
-        Interop.mkSliderProp "defaultValue" value
-
-    static member inline dots (value: bool) =
-        Interop.mkSliderProp "dots" value
-    static member inline disabled (value: bool) =
-        Interop.mkSliderProp "disabled" value
-    static member inline marks (marks: (int * ReactElement) seq) =
-        Interop.mkSliderProp "marks" marks
-
-    static member inline styles (props: ISliderStylesProp seq) = Interop.mkSliderProp "styles" (createObj !!props)
-    static member inline dotStyle (props: IDotStyleProp seq) = Interop.mkSliderProp "dotStyle" (createObj !!props)
-    static member inline activeDotStyle (props: IDotStyleProp seq) = Interop.mkSliderProp "activeDotStyle" (createObj !!props)
-
-    static member inline marksWithStyle (values: (int * (string * ReactElement)) list) =
-        let marksObj =
-            createObj [
-                for k, (color, label) in values ->
-                    k.ToString(), createObj [
-                        "style", createObj [ "color", color ]
-                        "label", label
-                    ]
-            ]
-        Interop.mkSliderProp "marks" marksObj
+type TransitionToast =
+    static member bounce = Interop.bounce
+    static member slide = Interop.slide
+    static member zoom = Interop.zoom
+    static member flip = Interop.flip
+    // static member fade = Interop.fade
 
 [<Erase>]
-type sliderStyle =
-    static member inline tracks (tracksProps: ISliderTrackProp seq) =
-        Interop.mkStyleProp "tracks" (createObj !!tracksProps)
-    static member inline track (trackProps: ISliderTrackProp seq) =
-        Interop.mkStyleProp "track" (createObj !!trackProps)
+type toastContainer =
+
+    static member inline position(position: Position) : IToastContainerProp =
+        match position with
+        | Position.TopRight -> Interop.mkToastContainerProp "position" "top-right"
+        | Position.TopLeft -> Interop.mkToastContainerProp "position" "top-left"
+        | Position.BottomRight -> Interop.mkToastContainerProp "position" "bottom-right"
+        | Position.BottomLeft -> Interop.mkToastContainerProp "position" "bottom-left"
+        | Position.TopCenter -> Interop.mkToastContainerProp "position" "top-center"
+        | Position.BottomCenter -> Interop.mkToastContainerProp "position" "bottom-center"
+    static member inline autoClose(ms: int) : IToastContainerProp = Interop.mkToastContainerProp "autoClose" ms
+    static member inline hideProgressBar(value: bool) : IToastContainerProp = Interop.mkToastContainerProp "hideProgressBar" value
+    static member inline closeOnClick(value: bool) : IToastContainerProp = Interop.mkToastContainerProp "closeOnClick" value
+    static member inline pauseOnHover(value: bool) : IToastContainerProp = Interop.mkToastContainerProp "pauseOnHover" value
+    static member inline draggable(value: bool) : IToastContainerProp = Interop.mkToastContainerProp "draggable" value
+    static member inline limit(value: int) : IToastContainerProp = Interop.mkToastContainerProp "limit" value
+    static member inline newestOnTop(value: bool) : IToastContainerProp = Interop.mkToastContainerProp "newestOnTop" value
+    static member inline rtl(value: bool) : IToastContainerProp = Interop.mkToastContainerProp "rtl" value
+    static member inline progress(value: float) : IToastContainerProp = Interop.mkToastContainerProp "progress" value
+    static member inline theme(theme: Theme) : IToastContainerProp = Interop.mkToastContainerProp "theme" theme
+
+    static member inline transition (transition: obj) : IToastContainerProp =
+        Interop.mkToastContainerProp "transition" transition
+    static member inline children(children: ReactElement list) =
+        unbox<IToastContainerProp> (prop.children children)
 
 [<Erase>]
-type sliderTrack =
-    static member inline color (color: string) =
-        Interop.mkSliderTrackProp "color" color
-    static member inline background (color: string) =
-        Interop.mkSliderTrackProp "background" color
-    static member inline height (height: int) =
-        Interop.mkSliderTrackProp "height" height
-    static member inline borderRadius (radius: int) =
-        Interop.mkSliderTrackProp "borderRadius" radius
+type toast =
+    static member inline position(position: Position) : IToastProp =
+        match position with
+        | Position.TopRight -> Interop.mkToastProp "position" "top-right"
+        | Position.TopLeft -> Interop.mkToastProp "position" "top-left"
+        | Position.BottomRight -> Interop.mkToastProp "position" "bottom-right"
+        | Position.BottomLeft -> Interop.mkToastProp "position" "bottom-left"
+        | Position.TopCenter -> Interop.mkToastProp "position" "top-center"
+        | Position.BottomCenter -> Interop.mkToastProp "position" "bottom-center"
+    static member inline autoClose(ms: int) : IToastProp = Interop.mkToastProp "autoClose" ms
+    static member inline hideProgressBar(value: bool) : IToastProp = Interop.mkToastProp "hideProgressBar" value
+    static member inline newestOnTop(value: bool) : IToastProp = Interop.mkToastProp "newestOnTop" value
+    static member inline closeOnClick(value: bool) : IToastProp = Interop.mkToastProp "closeOnClick" value
+    static member inline pauseOnHover(value: bool) : IToastProp = Interop.mkToastProp "pauseOnHover" value
+    static member inline draggable(value: bool) : IToastProp = Interop.mkToastProp "draggable" value
+    static member inline progress(value: float) : IToastProp = Interop.mkToastProp "progress" value
+    static member inline theme(theme: Theme) : IToastProp = Interop.mkToastProp "theme" theme
+
+    static member inline transition (transition: obj) : IToastProp =
+        Interop.mkToastProp "transition" transition
+
+    static member inline children(children: ReactElement list) =
+        unbox<IToastProp> (prop.children children)
+
 
 [<Erase>]
-type dotStyle =
-    static member inline color (color: string) =
-        Interop.mkDotStyleProp "color" color
-    static member inline background (color: string) =
-        Interop.mkDotStyleProp "background" color
-    static member inline height (height: int) =
-        Interop.mkDotStyleProp "height" height
-    static member inline width (width: int) =
-        Interop.mkDotStyleProp "width" width
-    static member inline borderRadius (radius: int) =
-        Interop.mkDotStyleProp "borderRadius" radius
-    static member inline borderColor (color: string) =
-        Interop.mkDotStyleProp "borderColor" color
+module ToastApi =
+    open Elmish
+    // Private function to call toast method
+    let private callToast (method: string) (msg: string) (options: IToastProp seq) =
+        emitJsExpr (Interop.toast, method, msg, keyValueList CaseRules.LowerFirst options) "$0[$1]($2, $3)"
+
+    // Show info toast with provided options
+    let info msg (props: IToastProp seq) : unit =
+        callToast "info" msg props
+    // Show success toast with provided options
+    let success msg (props: IToastProp seq) : unit =
+        callToast "success" msg props
+    // Show error toast with provided options
+    let error msg (props: IToastProp seq) : unit =
+        callToast "error" msg props
+    // Show warning toast with provided options
+    let warning msg (props: IToastProp seq) : unit =
+        callToast "warning" msg props
+    // Show default toast with provided options
+    let defaultToast msg (props: IToastProp seq) : unit =
+        callToast "default" msg props
+    // Elmish command versions
+    type ToastMsg<'a> = {
+        Message : string
+        Props: IToastProp  seq
+        mutable Dispatcher : Option<'a -> unit>
+    }
+
+    // let cmdInfo msg (props: IToastProp seq) : Cmd<'msg> =
+    //     Cmd.ofMsg (fun _ -> info msg props)
+    // let cmdSuccess msg (props: IToastProp seq) : Cmd<'msg> =
+    //     Cmd.ofMsg (fun _ -> success msg props)
+
+    /// Sets the message of toast
+    let message msg props =
+        {
+            Message = msg
+            Props = props
+            Dispatcher = None
+        }
+
+
+
+    let errorToast (msg: ToastMsg<'msg>) :  Cmd<'msg> =
+        [fun dispatch ->
+            msg.Dispatcher <- Some dispatch
+            error msg.Message msg.Props]
+    // let cmdSuccess msg (props: IToastProp seq) : Cmd<'msg> =
+    //     Cmd.ofSub (fun _ -> success msg props)
+
+    // let cmdWarn msg (props: IToastProp seq) : Cmd<'msg> =
+    //     Cmd.ofSub (fun _ -> warn msg props)
+
+    // let cmdError msg (props: IToastProp seq) : Cmd<'msg> =
+    //     Cmd.ofSub (fun _ -> error msg props)

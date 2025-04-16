@@ -1,17 +1,29 @@
 namespace Feliz.ReactToaster
 
-type ISliderProp =
+open Fable.Core
+
+type IToastProp =
+    interface
+    end
+type IToastContainerProp =
     interface
     end
 
-type ISliderStylesProp =
+type ITransition =
     interface
     end
+[<StringEnum;RequireQualifiedAccess>]
+type Position =
+    | TopRight
+    | TopLeft
+    | BottomRight
+    | BottomLeft
+    | TopCenter
+    | BottomCenter
 
-type ISliderTrackProp =
-    interface
-    end
+[<StringEnum;RequireQualifiedAccess>]
+type Theme =
+    | Light
+    | Dark
+    | Colored
 
-type IDotStyleProp =
-    interface
-    end

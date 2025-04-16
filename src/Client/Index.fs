@@ -6,81 +6,48 @@ open Feliz.ReactToaster
 
 type Model = { Txt: string }
 
-type Msg = UpdateTxt of string
-
+type Msg = | ShowToast
 let init () = { Txt = "" }, Cmd.none
+
+let toast message =
+    ToastApi.message message [
+        toast.position Position.TopRight
+        toast.autoClose 5000
+        toast.newestOnTop false
+        toast.hideProgressBar false
+        toast.closeOnClick true
+        toast.pauseOnHover true
+        toast.draggable true
+        toast.theme Theme.Light
+        toast.transition TransitionToast.flip
+    ]
+
+let errorToast title : Cmd<_> = toast title |> ToastApi.errorToast
 
 let update msg (model: Model) =
     match msg with
-    | UpdateTxt txt -> { model with Txt = txt }, Cmd.none
-
-// [<ReactComponent>]
-// let Slider () =
-//     ReactToaster.slider [
-//         slider.min 20
-//         slider.defaultValue 20
-//         slider.stepNull
-//         slider.marksWithStyle [
-//             20, ("red", Html.text "20")
-//             40, ("blue", Html.text "40")
-//             100, ("green", Html.text "100")
-//         ]
-//         slider.styles [
-//             sliderStyle.track [
-//                 sliderTrack.background "red"
-//             ]
-//         ]
-//         slider.onChange (fun value ->
-//             Browser.Dom.console.log value
-//         )
-//         slider.dotStyle [
-//             dotStyle.borderColor "orange"
-//         ]
-//         slider.activeDotStyle [
-//             dotStyle.borderColor "yellow"
-//         ]
-//     ]
-[<ReactComponent>]
-let ReactRange () =
-    ReactToaster.slider [
-        slider.range
-        slider.allowCross false
-        slider.defaultValueRange (20, 80)
-        slider.min 0
-        slider.max 100
-        slider.onChangeRange (fun (x,y) ->
-            Browser.Dom.console.log (x, y)
-        )
-        // slider.min 20
-        // slider.defaultValue 20
-        // slider.stepNull
-        // slider.marksWithStyle [
-        //     20, ("red", Html.text "20")
-        //     40, ("blue", Html.text "40")
-        //     100, ("green", Html.text "100")
-        // ]
-        // slider.styles [
-        //     sliderStyle.track [
-        //         sliderTrack.background "red"
-        //     ]
-        // ]
-        // slider.onChange (fun value ->
-        //     Browser.Dom.console.log value
-        // )
-        // slider.dotStyle [
-        //     dotStyle.borderColor "orange"
-        // ]
-        // slider.activeDotStyle [
-        //     dotStyle.borderColor "yellow"
-        // ]
-    ]
+    | ShowToast -> model, errorToast "Toast shown!"
 
 let view (model: Model) (dispatch: Msg -> unit) =
     Html.div [
-        prop.style [ style.height 600; style.width 600; style.marginLeft 100 ]
-        prop.children [
-            Html.h1 "Hello from ReactToaster"
-            ReactRange()
+        Html.h1 "Hello from ReactToaster"
+
+        Html.button [
+            prop.text "Notify !"
+            prop.onClick (fun _ -> dispatch ShowToast)
+            prop.className "btn btn-primary"
         ]
 
+        ReactToaster.toastContainer [
+            toastContainer.position Position.TopRight
+            toastContainer.newestOnTop false
+            toastContainer.autoClose 10000
+            toastContainer.hideProgressBar true
+            toastContainer.closeOnClick true
+            toastContainer.pauseOnHover true
+            toastContainer.draggable true
+            toastContainer.rtl false
+            toastContainer.theme Theme.Colored
+            toastContainer.transition TransitionToast.bounce
+        ]
     ]

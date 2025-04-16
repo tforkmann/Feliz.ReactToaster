@@ -42,7 +42,7 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
 let summary = "Feliz React Binding for ReactToaster"
 
-let copyright = "Copyright \169 2022"
+let copyright = "Copyright \169 2025"
 let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.ReactToaster/main/Feliz.ReactToaster_logo.png"
 let licenceUrl = "https://github.com/tforkmann/Feliz.ReactToaster/blob/master/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
@@ -54,7 +54,7 @@ let description = """Feliz binding for React Slider."""
 let authors = [ "Tim Forkmann"]
 let owner = "tForkmann"
 // Tags for your project (for NuGet package)
-let tags = "fsharp;fable;react;react-slider;feliz"
+let tags = "fsharp;fable;react;react-toastify;toaster;feliz"
 
 Target.create "Clean" (fun _ ->
     !!"src/**/bin"
@@ -185,6 +185,7 @@ let pushPackage _ =
         Trace.tracef "fileName %s" fileName
         let cmd = nugetCmd fileName key
         run dotnet cmd buildDir)
+
 Target.create "Push" (fun _ -> pushPackage [] )
 
 let docsSrcPath = Path.getFullName "./src/Docs"

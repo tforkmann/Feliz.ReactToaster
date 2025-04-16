@@ -1,2 +1,4 @@
 group Package
     Feliz
+    Fable.Elmish
+    Fable.Elmish.React

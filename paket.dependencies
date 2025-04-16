@@ -19,9 +19,10 @@ nuget Fake.DotNet.Cli
 nuget Fake.Core.ReleaseNotes
 nuget Fake.Tools.Git
 nuget Fake.Core.UserInput
-
 group Package
     source https://api.nuget.org/v3/index.json
     framework: netstandard2.0
 
     nuget Feliz
+    nuget Fable.Elmish
+    nuget Fable.Elmish.React
