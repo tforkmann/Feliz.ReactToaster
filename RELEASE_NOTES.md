@@ -1,3 +1,5 @@
+#### 0.1.7 - 2025-04-26
+* Use newest Fable.Elmish
 #### 0.1.6 - 2025-04-16
 * Downgrade Fable.Elmish
 #### 0.1.5 - 2025-04-16
