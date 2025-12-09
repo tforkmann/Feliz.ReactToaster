@@ -27,3 +27,16 @@ type Theme =
     | Dark
     | Colored
 
+[<StringEnum;RequireQualifiedAccess>]
+type DraggableDirection =
+    | X
+    | Y
+
+[<StringEnum;RequireQualifiedAccess>]
+type ToastType =
+    | Info
+    | Success
+    | Warning
+    | Error
+    | Default
+

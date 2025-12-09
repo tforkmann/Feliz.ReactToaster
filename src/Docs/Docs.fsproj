@@ -8,7 +8,8 @@
         <Compile Include="SharedView.fs" />
         <Compile Include="Pages/Install.fs" />
         <Compile Include="Pages/Use.fs" />
-        <Compile Include="Pages/Slider.fs" />
+        <Compile Include="Pages/Examples.fs" />
+        <Compile Include="Pages/Advanced.fs" />
         <Compile Include="View.fs" />
         <Compile Include="App.fs" />
         <Content Include="index.html" />

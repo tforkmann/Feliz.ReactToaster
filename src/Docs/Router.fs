@@ -7,7 +7,8 @@ open Fable.Core.JsInterop
 type Page =
     | Install
     | Use
-    | Slider
+    | Examples
+    | Advanced
 
 [<RequireQualifiedAccess>]
 module Page =
@@ -16,7 +17,8 @@ module Page =
     let parseFromUrlSegments =
         function
         | [ "use" ] -> Use
-        | [ "slider" ] -> Slider
+        | [ "examples" ] -> Examples
+        | [ "advanced" ] -> Advanced
         | [] -> Install
         | _ -> defaultPage
 
@@ -25,7 +27,8 @@ module Page =
     let toUrlSegments =
         function
         | Install -> [] |> noQueryString
-        | Slider -> [ "slider" ] |> noQueryString
+        | Examples -> [ "examples" ] |> noQueryString
+        | Advanced -> [ "advanced" ] |> noQueryString
         | Use -> [ "use" ] |> noQueryString
 
 [<RequireQualifiedAccess>]
