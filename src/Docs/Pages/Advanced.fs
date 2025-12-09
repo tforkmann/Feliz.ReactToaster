@@ -275,7 +275,7 @@ ToastApi.successString "Custom toast!" [
 let AdvancedView () =
     Html.div [
         Daisy.card [
-            card.bordered
+            card.border
             prop.className "mb-8"
             prop.children [
                 Daisy.cardBody [

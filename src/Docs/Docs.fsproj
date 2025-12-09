@@ -4,6 +4,9 @@
         <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="../Feliz.ReactToaster/Feliz.ReactToaster.fsproj" />
+    </ItemGroup>
+    <ItemGroup>
         <Compile Include="Router.fs" />
         <Compile Include="SharedView.fs" />
         <Compile Include="Pages/Install.fs" />
