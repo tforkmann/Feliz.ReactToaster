@@ -8,25 +8,33 @@ open Docs.SharedView
 [<ReactComponent>]
 let ToastExamples () =
     Html.div [
-        prop.className "flex flex-col gap-4"
+        prop.className "flex flex-row flex-wrap gap-3"
         prop.children [
             Daisy.button.button [
                 button.success
+                button.md
+                prop.className "btn-success"
                 prop.text "Success Toast"
                 prop.onClick (fun _ -> ToastApi.successString "Operation completed successfully!" [] |> ignore)
             ]
             Daisy.button.button [
                 button.error
+                button.md
+                prop.className "btn-error"
                 prop.text "Error Toast"
                 prop.onClick (fun _ -> ToastApi.errorString "Something went wrong!" [] |> ignore)
             ]
             Daisy.button.button [
                 button.info
+                button.md
+                prop.className "btn-info"
                 prop.text "Info Toast"
                 prop.onClick (fun _ -> ToastApi.infoString "Here's some information for you." [] |> ignore)
             ]
             Daisy.button.button [
                 button.warning
+                button.md
+                prop.className "btn-warning"
                 prop.text "Warning Toast"
                 prop.onClick (fun _ -> ToastApi.warningString "Be careful with this action!" [] |> ignore)
             ]

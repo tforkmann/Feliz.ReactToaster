@@ -10,193 +10,230 @@ let mutable loadingToastId: ToastApi.ToastId option = None
 [<ReactComponent>]
 let AdvancedExamples () =
     Html.div [
-        prop.className "flex flex-col gap-4"
+        prop.className "flex flex-col gap-6"
         prop.children [
-            Html.h4 [ prop.className "font-bold"; prop.text "Loading & Update" ]
             Html.div [
-                prop.className "flex gap-2"
-                prop.children [
-                    Daisy.button.button [
-                        button.primary
-                        prop.text "Start Loading"
-                        prop.onClick (fun _ ->
-                            let id = ToastApi.loadingString "Loading data..." []
-                            loadingToastId <- Some id
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.success
-                        prop.text "Complete Loading"
-                        prop.onClick (fun _ ->
-                            match loadingToastId with
-                            | Some id ->
-                                ToastApi.updateWithString id "Data loaded successfully!" [
-                                    toast.toastType ToastType.Success
-                                    toast.isLoading false
-                                ]
-                                loadingToastId <- None
-                            | None -> ()
-                        )
+                Html.h4 [ prop.className "font-bold text-lg mb-3"; prop.text "Loading & Update" ]
+                Html.div [
+                    prop.className "flex flex-row flex-wrap gap-3"
+                    prop.children [
+                        Daisy.button.button [
+                            button.primary
+                            button.md
+                            prop.className "btn-primary"
+                            prop.text "Start Loading"
+                            prop.onClick (fun _ ->
+                                let id = ToastApi.loadingString "Loading data..." []
+                                loadingToastId <- Some id
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.success
+                            button.md
+                            prop.className "btn-success"
+                            prop.text "Complete Loading"
+                            prop.onClick (fun _ ->
+                                match loadingToastId with
+                                | Some id ->
+                                    ToastApi.updateWithString id "Data loaded successfully!" [
+                                        toast.toastType ToastType.Success
+                                        toast.isLoading false
+                                    ]
+                                    loadingToastId <- None
+                                | None -> ()
+                            )
+                        ]
                     ]
                 ]
             ]
 
-            Html.h4 [ prop.className "font-bold mt-4"; prop.text "Toast Control" ]
             Html.div [
-                prop.className "flex gap-2"
-                prop.children [
-                    Daisy.button.button [
-                        button.secondary
-                        prop.text "Dismiss All"
-                        prop.onClick (fun _ -> ToastApi.dismiss ())
-                    ]
-                    Daisy.button.button [
-                        button.ghost
-                        prop.text "Pause All"
-                        prop.onClick (fun _ -> ToastApi.pause ())
-                    ]
-                    Daisy.button.button [
-                        button.ghost
-                        prop.text "Play All"
-                        prop.onClick (fun _ -> ToastApi.play ())
+                Html.h4 [ prop.className "font-bold text-lg mb-3"; prop.text "Toast Control" ]
+                Html.div [
+                    prop.className "flex flex-row flex-wrap gap-3"
+                    prop.children [
+                        Daisy.button.button [
+                            button.secondary
+                            button.md
+                            prop.className "btn-secondary"
+                            prop.text "Dismiss All"
+                            prop.onClick (fun _ -> ToastApi.dismiss ())
+                        ]
+                        Daisy.button.button [
+                            button.neutral
+                            button.md
+                            prop.className "btn-neutral"
+                            prop.text "Pause All"
+                            prop.onClick (fun _ -> ToastApi.pause ())
+                        ]
+                        Daisy.button.button [
+                            button.neutral
+                            button.md
+                            prop.className "btn-neutral"
+                            prop.text "Play All"
+                            prop.onClick (fun _ -> ToastApi.play ())
+                        ]
                     ]
                 ]
             ]
 
-            Html.h4 [ prop.className "font-bold mt-4"; prop.text "Transitions" ]
             Html.div [
-                prop.className "flex gap-2 flex-wrap"
-                prop.children [
-                    Daisy.button.button [
-                        button.outline
-                        prop.text "Bounce"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Bounce!" [
-                                toast.transition TransitionToast.bounce
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.outline
-                        prop.text "Slide"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Slide!" [
-                                toast.transition TransitionToast.slide
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.outline
-                        prop.text "Zoom"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Zoom!" [
-                                toast.transition TransitionToast.zoom
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.outline
-                        prop.text "Flip"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Flip!" [
-                                toast.transition TransitionToast.flip
-                            ] |> ignore
-                        )
+                Html.h4 [ prop.className "font-bold text-lg mb-3"; prop.text "Transitions" ]
+                Html.div [
+                    prop.className "flex flex-row flex-wrap gap-3"
+                    prop.children [
+                        Daisy.button.button [
+                            button.outline
+                            button.md
+                            prop.className "btn-outline"
+                            prop.text "Bounce"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Bounce!" [
+                                    toast.transition TransitionToast.bounce
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.outline
+                            button.md
+                            prop.className "btn-outline"
+                            prop.text "Slide"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Slide!" [
+                                    toast.transition TransitionToast.slide
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.outline
+                            button.md
+                            prop.className "btn-outline"
+                            prop.text "Zoom"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Zoom!" [
+                                    toast.transition TransitionToast.zoom
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.outline
+                            button.md
+                            prop.className "btn-outline"
+                            prop.text "Flip"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Flip!" [
+                                    toast.transition TransitionToast.flip
+                                ] |> ignore
+                            )
+                        ]
                     ]
                 ]
             ]
 
-            Html.h4 [ prop.className "font-bold mt-4"; prop.text "Positions" ]
             Html.div [
-                prop.className "flex gap-2 flex-wrap"
-                prop.children [
-                    Daisy.button.button [
-                        button.xs
-                        prop.text "Top Right"
-                        prop.onClick (fun _ ->
-                            ToastApi.infoString "Top Right!" [
-                                toast.position Position.TopRight
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.xs
-                        prop.text "Top Left"
-                        prop.onClick (fun _ ->
-                            ToastApi.infoString "Top Left!" [
-                                toast.position Position.TopLeft
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.xs
-                        prop.text "Top Center"
-                        prop.onClick (fun _ ->
-                            ToastApi.infoString "Top Center!" [
-                                toast.position Position.TopCenter
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.xs
-                        prop.text "Bottom Right"
-                        prop.onClick (fun _ ->
-                            ToastApi.infoString "Bottom Right!" [
-                                toast.position Position.BottomRight
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.xs
-                        prop.text "Bottom Left"
-                        prop.onClick (fun _ ->
-                            ToastApi.infoString "Bottom Left!" [
-                                toast.position Position.BottomLeft
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.xs
-                        prop.text "Bottom Center"
-                        prop.onClick (fun _ ->
-                            ToastApi.infoString "Bottom Center!" [
-                                toast.position Position.BottomCenter
-                            ] |> ignore
-                        )
+                Html.h4 [ prop.className "font-bold text-lg mb-3"; prop.text "Positions" ]
+                Html.div [
+                    prop.className "flex flex-row flex-wrap gap-3"
+                    prop.children [
+                        Daisy.button.button [
+                            button.sm
+                            prop.className "btn-outline btn-sm"
+                            prop.text "Top Right"
+                            prop.onClick (fun _ ->
+                                ToastApi.infoString "Top Right!" [
+                                    toast.position Position.TopRight
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.sm
+                            prop.className "btn-outline btn-sm"
+                            prop.text "Top Left"
+                            prop.onClick (fun _ ->
+                                ToastApi.infoString "Top Left!" [
+                                    toast.position Position.TopLeft
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.sm
+                            prop.className "btn-outline btn-sm"
+                            prop.text "Top Center"
+                            prop.onClick (fun _ ->
+                                ToastApi.infoString "Top Center!" [
+                                    toast.position Position.TopCenter
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.sm
+                            prop.className "btn-outline btn-sm"
+                            prop.text "Bottom Right"
+                            prop.onClick (fun _ ->
+                                ToastApi.infoString "Bottom Right!" [
+                                    toast.position Position.BottomRight
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.sm
+                            prop.className "btn-outline btn-sm"
+                            prop.text "Bottom Left"
+                            prop.onClick (fun _ ->
+                                ToastApi.infoString "Bottom Left!" [
+                                    toast.position Position.BottomLeft
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.sm
+                            prop.className "btn-outline btn-sm"
+                            prop.text "Bottom Center"
+                            prop.onClick (fun _ ->
+                                ToastApi.infoString "Bottom Center!" [
+                                    toast.position Position.BottomCenter
+                                ] |> ignore
+                            )
+                        ]
                     ]
                 ]
             ]
 
-            Html.h4 [ prop.className "font-bold mt-4"; prop.text "Themes" ]
             Html.div [
-                prop.className "flex gap-2"
-                prop.children [
-                    Daisy.button.button [
-                        button.sm
-                        prop.text "Light"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Light theme!" [
-                                toast.theme Theme.Light
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.sm
-                        prop.text "Dark"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Dark theme!" [
-                                toast.theme Theme.Dark
-                            ] |> ignore
-                        )
-                    ]
-                    Daisy.button.button [
-                        button.sm
-                        prop.text "Colored"
-                        prop.onClick (fun _ ->
-                            ToastApi.successString "Colored theme!" [
-                                toast.theme Theme.Colored
-                            ] |> ignore
-                        )
+                Html.h4 [ prop.className "font-bold text-lg mb-3"; prop.text "Themes" ]
+                Html.div [
+                    prop.className "flex flex-row flex-wrap gap-3"
+                    prop.children [
+                        Daisy.button.button [
+                            button.md
+                            prop.className "btn-ghost"
+                            prop.text "Light"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Light theme!" [
+                                    toast.theme Theme.Light
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.md
+                            prop.className "btn-neutral"
+                            prop.text "Dark"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Dark theme!" [
+                                    toast.theme Theme.Dark
+                                ] |> ignore
+                            )
+                        ]
+                        Daisy.button.button [
+                            button.md
+                            prop.className "btn-accent"
+                            prop.text "Colored"
+                            prop.onClick (fun _ ->
+                                ToastApi.successString "Colored theme!" [
+                                    toast.theme Theme.Colored
+                                ] |> ignore
+                            )
+                        ]
                     ]
                 ]
             ]
