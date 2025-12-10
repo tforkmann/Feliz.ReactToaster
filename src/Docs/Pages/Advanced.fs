@@ -20,7 +20,7 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.primary
                             button.md
-                            prop.className "btn-primary"
+                            prop.className "btn btn-primary"
                             prop.text "Start Loading"
                             prop.onClick (fun _ ->
                                 let id = ToastApi.loadingString "Loading data..." []
@@ -30,7 +30,7 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.success
                             button.md
-                            prop.className "btn-success"
+                            prop.className "btn btn-success"
                             prop.text "Complete Loading"
                             prop.onClick (fun _ ->
                                 match loadingToastId with
@@ -55,21 +55,21 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.secondary
                             button.md
-                            prop.className "btn-secondary"
+                            prop.className "btn btn-secondary"
                             prop.text "Dismiss All"
                             prop.onClick (fun _ -> ToastApi.dismiss ())
                         ]
                         Daisy.button.button [
                             button.neutral
                             button.md
-                            prop.className "btn-neutral"
+                            prop.className "btn btn-neutral"
                             prop.text "Pause All"
                             prop.onClick (fun _ -> ToastApi.pause ())
                         ]
                         Daisy.button.button [
                             button.neutral
                             button.md
-                            prop.className "btn-neutral"
+                            prop.className "btn btn-neutral"
                             prop.text "Play All"
                             prop.onClick (fun _ -> ToastApi.play ())
                         ]
@@ -85,7 +85,7 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.outline
                             button.md
-                            prop.className "btn-outline"
+                            prop.className "btn btn-outline"
                             prop.text "Bounce"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Bounce!" [
@@ -96,7 +96,7 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.outline
                             button.md
-                            prop.className "btn-outline"
+                            prop.className "btn btn-outline"
                             prop.text "Slide"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Slide!" [
@@ -107,7 +107,7 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.outline
                             button.md
-                            prop.className "btn-outline"
+                            prop.className "btn btn-outline"
                             prop.text "Zoom"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Zoom!" [
@@ -118,7 +118,7 @@ let AdvancedExamples () =
                         Daisy.button.button [
                             button.outline
                             button.md
-                            prop.className "btn-outline"
+                            prop.className "btn btn-outline"
                             prop.text "Flip"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Flip!" [
@@ -137,7 +137,7 @@ let AdvancedExamples () =
                     prop.children [
                         Daisy.button.button [
                             button.sm
-                            prop.className "btn-outline btn-sm"
+                            prop.className "btn btn-outline btn-sm"
                             prop.text "Top Right"
                             prop.onClick (fun _ ->
                                 ToastApi.infoString "Top Right!" [
@@ -147,7 +147,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.sm
-                            prop.className "btn-outline btn-sm"
+                            prop.className "btn btn-outline btn-sm"
                             prop.text "Top Left"
                             prop.onClick (fun _ ->
                                 ToastApi.infoString "Top Left!" [
@@ -157,7 +157,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.sm
-                            prop.className "btn-outline btn-sm"
+                            prop.className "btn btn-outline btn-sm"
                             prop.text "Top Center"
                             prop.onClick (fun _ ->
                                 ToastApi.infoString "Top Center!" [
@@ -167,7 +167,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.sm
-                            prop.className "btn-outline btn-sm"
+                            prop.className "btn btn-outline btn-sm"
                             prop.text "Bottom Right"
                             prop.onClick (fun _ ->
                                 ToastApi.infoString "Bottom Right!" [
@@ -177,7 +177,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.sm
-                            prop.className "btn-outline btn-sm"
+                            prop.className "btn btn-outline btn-sm"
                             prop.text "Bottom Left"
                             prop.onClick (fun _ ->
                                 ToastApi.infoString "Bottom Left!" [
@@ -187,7 +187,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.sm
-                            prop.className "btn-outline btn-sm"
+                            prop.className "btn btn-outline btn-sm"
                             prop.text "Bottom Center"
                             prop.onClick (fun _ ->
                                 ToastApi.infoString "Bottom Center!" [
@@ -206,7 +206,7 @@ let AdvancedExamples () =
                     prop.children [
                         Daisy.button.button [
                             button.md
-                            prop.className "btn-ghost"
+                            prop.className "btn btn-ghost"
                             prop.text "Light"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Light theme!" [
@@ -216,7 +216,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.md
-                            prop.className "btn-neutral"
+                            prop.className "btn btn-neutral"
                             prop.text "Dark"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Dark theme!" [
@@ -226,7 +226,7 @@ let AdvancedExamples () =
                         ]
                         Daisy.button.button [
                             button.md
-                            prop.className "btn-accent"
+                            prop.className "btn btn-accent"
                             prop.text "Colored"
                             prop.onClick (fun _ ->
                                 ToastApi.successString "Colored theme!" [

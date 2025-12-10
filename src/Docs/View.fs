@@ -24,38 +24,41 @@ let update (msg: Msg) (state: State) : State * Cmd<Msg> =
 
 let private rightSide state dispatch (title: string) (docLink: string) elm =
     Daisy.drawerContent [
-        Daisy.navbar [
-            Daisy.navbarStart [
-                Html.divClassed
-                    "lg:hidden"
-                    [ Daisy.button.label [
-                          button.square
-                          button.ghost
-                          prop.htmlFor "main-menu"
-                          prop.children [
-                              Svg.svg [
-                                  svg.viewBox (0, 0, 24, 24)
-                                  svg.className "inline-block w-6 h-6 stroke-current"
-                                  svg.children [
-                                      Svg.path [
-                                          svg.d "M4 6h16M4 12h16M4 18h16"
-                                          svg.strokeWidth 2
+        prop.className "drawer-content"
+        prop.children [
+            Daisy.navbar [
+                Daisy.navbarStart [
+                    Html.divClassed
+                        "lg:hidden"
+                        [ Daisy.button.label [
+                              button.square
+                              button.ghost
+                              prop.htmlFor "main-menu"
+                              prop.children [
+                                  Svg.svg [
+                                      svg.viewBox (0, 0, 24, 24)
+                                      svg.className "inline-block w-6 h-6 stroke-current"
+                                      svg.children [
+                                          Svg.path [
+                                              svg.d "M4 6h16M4 12h16M4 18h16"
+                                              svg.strokeWidth 2
+                                          ]
                                       ]
                                   ]
                               ]
-                          ]
-                      ] ]
+                          ] ]
+                ]
             ]
-        ]
 
-        Html.divClassed
-            "px-5 py-5"
-            [ Html.h2 [
-                  color.textPrimary
-                  ++ prop.className "my-6 text-5xl font-bold"
-                  prop.text title
-              ]
-              elm ]
+            Html.divClassed
+                "px-5 py-5"
+                [ Html.h2 [
+                      color.textPrimary
+                      ++ prop.className "my-6 text-5xl font-bold"
+                      prop.text title
+                  ]
+                  elm ]
+        ]
     ]
 
 let private leftSide (p: Page) =
@@ -71,36 +74,39 @@ let private leftSide (p: Page) =
         ]
 
     Daisy.drawerSide [
-        Daisy.drawerOverlay [
-            prop.htmlFor "main-menu"
-        ]
-        Html.aside [
-            prop.className "flex flex-col border-r w-80 bg-base-100 text-base-content"
-            prop.children [
-                Html.divClassed
-                    "inline-block text-3xl font-title px-5 py-5 font-bold"
-                    [ Html.span [
-                          color.textPrimary
-                          prop.text "Feliz.ReactToaster"
-                      ]
-                      Html.a [
-                          prop.href "https://www.nuget.org/packages/Feliz.ReactToaster"
-                          prop.children [
-                              Html.img [
-                                  prop.src "https://img.shields.io/nuget/v/Feliz.ReactToaster.svg?style=flat-square"
-                              ]
+        prop.className "drawer-side"
+        prop.children [
+            Daisy.drawerOverlay [
+                prop.htmlFor "main-menu"
+            ]
+            Html.aside [
+                prop.className "flex flex-col border-r w-80 bg-base-100 text-base-content h-full"
+                prop.children [
+                    Html.divClassed
+                        "inline-block text-3xl font-title px-5 py-5 font-bold"
+                        [ Html.span [
+                              color.textPrimary
+                              prop.text "Feliz.ReactToaster"
                           ]
-                      ] ]
-                Daisy.menu [
-                    menu.md
-                    prop.className "flex flex-col p-4 pt-0"
-                    prop.children [
-                        Daisy.menuTitle [ Html.span "Docs" ]
-                        mi "Install" Install
-                        mi "Use" Use
-                        mi "Examples" Examples
-                        mi "Advanced" Advanced
+                          Html.a [
+                              prop.href "https://www.nuget.org/packages/Feliz.ReactToaster"
+                              prop.children [
+                                  Html.img [
+                                      prop.src "https://img.shields.io/nuget/v/Feliz.ReactToaster.svg?style=flat-square"
+                                  ]
+                              ]
+                          ] ]
+                    Daisy.menu [
+                        menu.md
+                        prop.className "flex flex-col p-4 pt-0"
+                        prop.children [
+                            Daisy.menuTitle [ Html.span "Docs" ]
+                            mi "Install" Install
+                            mi "Use" Use
+                            mi "Examples" Examples
+                            mi "Advanced" Advanced
                         ]
+                    ]
                 ]
             ]
         ]

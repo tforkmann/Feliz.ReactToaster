@@ -13,28 +13,28 @@ let ToastExamples () =
             Daisy.button.button [
                 button.success
                 button.md
-                prop.className "btn-success"
+                prop.className "btn btn-success"
                 prop.text "Success Toast"
                 prop.onClick (fun _ -> ToastApi.successString "Operation completed successfully!" [] |> ignore)
             ]
             Daisy.button.button [
                 button.error
                 button.md
-                prop.className "btn-error"
+                prop.className "btn btn-error"
                 prop.text "Error Toast"
                 prop.onClick (fun _ -> ToastApi.errorString "Something went wrong!" [] |> ignore)
             ]
             Daisy.button.button [
                 button.info
                 button.md
-                prop.className "btn-info"
+                prop.className "btn btn-info"
                 prop.text "Info Toast"
                 prop.onClick (fun _ -> ToastApi.infoString "Here's some information for you." [] |> ignore)
             ]
             Daisy.button.button [
                 button.warning
                 button.md
-                prop.className "btn-warning"
+                prop.className "btn btn-warning"
                 prop.text "Warning Toast"
                 prop.onClick (fun _ -> ToastApi.warningString "Be careful with this action!" [] |> ignore)
             ]

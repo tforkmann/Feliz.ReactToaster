@@ -1,8 +1,47 @@
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
-@plugin 'daisyui' {
-    themes: all;
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark;
+}
+
+@utility btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: var(--size, 3rem);
+    min-height: var(--size, 3rem);
+    padding-inline: var(--btn-p, 1rem);
+    font-size: var(--fontsize, 0.875rem);
+    font-weight: 600;
+    line-height: 1em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--radius-field, 0.5rem);
+    border-width: var(--border, 1px);
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    outline-color: var(--btn-color, var(--color-base-content));
+    border-color: var(--btn-border, var(--btn-color, var(--color-base-200)));
+    background-color: var(--btn-bg, var(--btn-color, var(--color-base-200)));
+    color: var(--btn-fg, var(--color-base-content));
+    transition: all 0.2s ease;
+    &:hover {
+        filter: brightness(0.9);
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+@utility drawer-content {
+    grid-column-start: 2;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 html, body {
