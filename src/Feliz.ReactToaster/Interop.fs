@@ -8,9 +8,9 @@ open Fable.Core.JsInterop
 module Interop =
     // Import the toast and toastContainer directly
     [<Import("toast", from="react-toastify")>]
-    let toast: obj = jsNative
+    let toast: Feliz.ReactElement = jsNative
 
-    let toastContainer: obj = import "ToastContainer" "react-toastify"
+    let toastContainer: Feliz.ReactElement = import "ToastContainer" "react-toastify"
 
     let inline mkToastProp (key: string) (value: obj) : IToastProp = unbox (key, value)
     let inline mkToastContainerProp (key: string) (value: obj) : IToastContainerProp = unbox (key, value)
