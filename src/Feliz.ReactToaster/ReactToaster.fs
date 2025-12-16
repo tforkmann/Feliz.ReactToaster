@@ -11,9 +11,9 @@ type Event = Browser.Types.Event
 type ReactToaster =
 
     static member inline toast(props: IToastProp seq) =
-        Interop.reactApi.createElement (Interop.toast, createObj !!props)
+        ReactLegacy.createElement (Interop.toast, createObj !!props)
     static member inline toastContainer(props: IToastContainerProp seq) =
-        Interop.reactApi.createElement (Interop.toastContainer, createObj !!props)
+        ReactLegacy.createElement (Interop.toastContainer, createObj !!props)
     static member inline children(children: ReactElement list) =
         unbox<IToastProp> (prop.children children)
 
